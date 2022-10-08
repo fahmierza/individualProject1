@@ -1,0 +1,75 @@
+<%- include('templates/header')-%>
+
+	<div class="row justify-content-center mb-5">
+
+		<div class="col-md-8 ">
+			<div class="card p-4">
+
+				<a href="/" role="button" class="btn btn-outline-danger">Kembali</a>
+				<br>
+				<div style="max-height:300px; overflow:hidden;">
+					<img class="img-fluid " src="file:///C:/Users/fahmierza/Documents/Bootcamp/individualProject1/images/<%=newss.image %>" alt="<%=newss.judul %>"/>
+				</div>
+				<br>
+				<h2 class="mb-3">
+					<%= newss.judul %>
+				</h2>
+
+				<h6>Author: <%= newss.author %>
+				</h6>
+
+				<article class="my-3 fs-5">
+					<%= newss.artikel %>
+				</article>
+
+
+			</div>
+			<div class="card mt-3 ">
+				<div class="card-body">
+					<h4 class="card-title">Komentar</h4>
+				</div>
+				<% comments.forEach(function(item){ %>
+					<div class="comment-widgets m-b-20 ">
+						<div class="d-flex flex-row comment-row">
+							<div class="comment-text w-100">
+								<h5>
+									<%= item.nama %>
+								</h5>
+								<div class="comment-footer">
+									<span class="date">
+										<%= moment(item.createdAt).format('yyyy-MM-DD, HH:mm') %>
+									</span>
+								</div>
+								<p class="m-b-5 m-t-10 mt-1">
+									<%= item.komentar %>
+								</p>
+							</div>
+						</div>
+					</div>
+					<% }); %>
+			</div>
+
+			<div class="card mt-3 p-4">
+				<form method="POST" action="/comment">
+					<div class="mb-3 ">
+						<input type="hidden" name="idnews" value="<%= newss.id %>" />
+						<label for="nama" class="form-label">Nama</label>
+						<input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" />
+					</div>
+					<div class="mb-3">
+						<label for="comment" class="form-label">Tulis Komentar</label>
+						<textarea type="text" name="komentar" class="form-control" id="komentar"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Kirim</button>
+
+				</form>
+			</div>
+		</div>
+
+		<a href="/editnews/<%= newss.id%>" class="btn btn-outline-warning">Edit</a>
+		&nbsp;<a href="/deletenews/<%= newss.id%>" class="btn btn-outline-danger">delete</a>
+	</div>
+
+
+
+	<%- include('templates/footer')-%>

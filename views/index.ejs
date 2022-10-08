@@ -1,0 +1,23 @@
+
+<%- include('templates/header')-%>
+<h1>Berita Terkini</h1>
+<br>
+<div>
+	<a href="/addnews" class="btn btn-primary">
+		+</a>
+</div>
+<br>
+<br>
+<% newss.forEach(function(item){ %> 
+<div class="card" style="width: 25rem;">
+    <img src="file:///C:/Users/fahmierza/Documents/Bootcamp/individualProject1/images/<%=item.image%>" class="card-img-top" alt="<%=item.judul%>"/>
+    <div class="card-body">
+      <h5 class="card-title"><%=item.judul %></h5>
+      <a href="/newsdetail/<%= item.id %>" class="btn btn-outline-info">Baca lebih</a>
+    </div>
+</div>
+<br>
+<% }) %>
+
+
+<%- include('templates/footer')-%>

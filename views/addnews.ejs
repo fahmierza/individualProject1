@@ -1,0 +1,25 @@
+<%- include('templates/header')-%>
+
+		<h1>Buat Berita</h1>
+		<br>
+		<form method="POST" action="/addnews" class="mt-4" enctype="multipart/form-data">
+			<div class="mb-3">
+				<label for="judul" class="form-label">Judul Berita</label>
+				<input type="text" class="form-control" name="judul" id="judul" placeholder="Judul Berita">
+			</div>
+			<div class="mb-3">
+				<label for="author" class="form-label">Author</label>
+				<input type="text" class="form-control" name="author" id="author" placeholder="Author">
+			</div>
+			<div class="mb-3">
+				<label for="image" class="form-label">Image</label>
+				<input type="file" accept="image/png, image/jpeg, image/jpg" class="form-control-file" id="image" name="image" required>
+			</div>
+			<div class="mb-3">
+				  <label for="artikel" class="form-label">Artikel</label>
+				  <textarea name="artikel" class="form-control" id="artikel" placeholder="Isi Artikel" required></textarea>
+			</div>	
+			<button type="submit" class="btn btn-primary">Kirim</button>
+		</form>
+
+<%- include('templates/footer')-%>
